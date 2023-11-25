@@ -11,7 +11,7 @@
 }
 
 .header {
-    background-color: #045ccc;
+    background-color: #045ccc !important;
 
 }
 
@@ -29,8 +29,8 @@
     border-radius: 5px;
 }
 
-@media screen and (min-width:992px) {
+/* @media screen and (min-width:992px) {
     .header {
         background: transparent;
     }
-}
+} */

@@ -1,12 +1,16 @@
 import React from 'react'
 import style from '@/styles/Navbar.module.css'
+import { usePathname } from 'next/navigation'
 
 export default function Navbar() {
+
+    const url = usePathname()
+
     return (
-        <header className={style.header}>
+        <header className={style.header} style={url == "/" ? { background: "transparent" } : { backgroundColor: "#045ccc" }}>
             <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="index.html">
+                    <a className="navbar-brand" href="/">
                         <img src="/images/logo.png" alt="logo va longe" />
                     </a>
                     <button
@@ -43,7 +47,7 @@ export default function Navbar() {
                                 <a
                                     className={"nav-link " + style.style_link_hover}
                                     aria-current="page"
-                                    href="sales.html"
+                                    href="/sales"
                                 >
                                     <svg
                                         height="30px"
@@ -101,7 +105,7 @@ export default function Navbar() {
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className={"nav-link " + style.style_link_hover} href="contact.html">
+                                <a className={"nav-link " + style.style_link_hover} href="/contact">
                                     <svg
                                         width="30px"
                                         height="30px"
@@ -183,7 +187,7 @@ export default function Navbar() {
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className={"nav-link " + style.style_link_hover} href="destiny.html">
+                                <a className={"nav-link " + style.style_link_hover} href="/destinys">
                                     <svg
                                         fill="#FFC107"
                                         width="30px"

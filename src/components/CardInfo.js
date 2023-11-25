@@ -42,8 +42,8 @@ export default function CardInfo() {
 
   return (
     <section className="container d-flex flex-column gap-5 my-5">
-      {cardSession.map(card => (
-        <div className={style.card_info_trip}>
+      {cardSession.map((card, index) => (
+        <div key={index} className={style.card_info_trip}>
           <img src={card.img} alt="Foto de praia paradisiaca" />
           <div>
             <h2>{card.title}</h2>

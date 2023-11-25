@@ -3,22 +3,7 @@ import style from '@/styles/main/cardSales.module.css'
 export default function CardSales() {
     return (
         <section>
-            <div className="d-flex justify-content-between">
-                <h4>Promoções</h4>
-                <a
-                    className="link icon icon-link-hover text-decoration-none"
-                    href="sales.html"
-                >
-                    Ver mais
-                    <img
-                        className="img_link bi"
-                        aria-hidden="true"
-                        src="images/seta.png"
-                        alt=""
-                    />
-                </a>
-            </div>
-            <div className="mt-3 d-flex flex-wrap justify-content-evenly gap-5 ">
+            <div className="m-3 d-flex flex-wrap justify-content-evenly gap-5 ">
                 <div
                     className={`card position-relative ${style.card_sale}`}
                     style={{ width: "18rem" }}

@@ -3,21 +3,14 @@ import Head from 'next/head'
 import style from '@/styles/main/main.module.css';
 import CardDestiny from '@/components/CardDestiny';
 import CardSales from '@/components/CardSales';
+import Title from '@/components/Title';
+import BannerInfo from '@/components/BannerInfo';
 
 
 
 export default function Home() {
 
-  const containerInfo = [{
-    title: " Viagens para qualquer lugar do mundo",
-    img: "images/aviao.png"
-  }, {
-    title: "Parcelamento em até 12x sem juros",
-    img: "images/carteira.png"
-  }, {
-    title: " Sua compra totalmente segura",
-    img: "images/seguranca.png"
-  },]
+
 
 
   return (
@@ -52,20 +45,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* container das informações */}
-        <section className={`d-flex justify-content-around flex-wrap ${style.info_container} p-3`}>
-          {containerInfo.map(card => (
-            <span class=""><img class="pe-2" src={card.img} alt="icone aviao" />
-              {card.title}
-            </span>
-          ))}
 
-
-
-        </section>
-
+        <BannerInfo />
         <CardInfo />
+        <Title title="Promoções" link="/sales" />
         <CardSales />
+        <Title title="Destinos" link="/destinys" />
         <CardDestiny />
       </main>
     </>

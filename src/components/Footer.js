@@ -1,4 +1,5 @@
 import style from '@/styles/Footer.module.css';
+import Link from 'next/link';
 export default function Footer() {
     return (
         <footer className={`py-5 d-flex flex-column align-items-center ${style.footer}`}>
@@ -6,12 +7,12 @@ export default function Footer() {
                 <div>
                     <h4>Vá longe</h4>
                     <p>
-                        <a
+                        <Link
                             className={`text-decoration-none text-dark ${style.footer_link}`}
-                            href="sobre.html"
+                            href="/about"
                         >
                             Sobre nós
-                        </a>
+                        </Link>
                     </p>
                     <p>SAC 21 2222-2222</p>
                     <p>Atendimento Seg. a Sex: 09h às 19h</p>
@@ -28,43 +29,43 @@ export default function Footer() {
                 <div>
                     <h4>Viaje com a gente</h4>
                     <p>
-                        {" "}
-                        <a
-                            href="sales.html"
+
+                        <Link
+                            href="/sales"
                             className={`text-decoration-none text-dark ${style.footer_link}`}
                         >
                             Promoção
-                        </a>{" "}
+                        </Link>
                     </p>
                     <p>
-                        {" "}
-                        <a
-                            href="destiny.html"
+
+                        <Link
+                            href="/destinys"
                             className={`text-decoration-none text-dark ${style.footer_link}`}
                         >
                             Destinos
-                        </a>{" "}
+                        </Link>
                     </p>
                     <p>
-                        {" "}
-                        <a
-                            href="contact.html"
+
+                        <Link
+                            href="/contact"
                             className={`text-decoration-none text-dark ${style.footer_link}`}
                         >
                             Fale conosco
-                        </a>{" "}
+                        </Link>
                     </p>
                 </div>
                 <div>
                     <h4>Siga nossas redes</h4>
                     <a href="#" className="text-decoration-none">
-                        <img src="assets/images/instagram.png" alt="icone instagram" />
+                        <img src="images/instagram.png" alt="icone instagram" />
                     </a>
                     <a href="#" className="text-decoration-none">
-                        <img src="assets/images/facebook.png" alt="icone facebook" />
+                        <img src="images/facebook.png" alt="icone facebook" />
                     </a>
                     <a href="#" className="text-decoration-none">
-                        <img src="assets/images/youtube.png" alt="icone youtube" />
+                        <img src="images/youtube.png" alt="icone youtube" />
                     </a>
                 </div>
             </div>
@@ -76,7 +77,7 @@ export default function Footer() {
                     target="_blank"
                 >
                     Maicon Nunes
-                    <img width="40px" src="assets/images/linkedin.png" alt="icone linkedin" />
+                    <img width="40px" src="images/linkedin.png" alt="icone linkedin" />
                 </a>
             </div>
         </footer>

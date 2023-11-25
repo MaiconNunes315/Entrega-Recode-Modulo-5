@@ -2,22 +2,8 @@ import style from '@/styles/main/cardDestiny.module.css';
 
 export default function CardDestiny() {
     return (
-        <section className="mt-5">
-            <div className="d-flex justify-content-between">
-                <h4>Destinos</h4>
-                <a
-                    className="link icon icon-link-hover text-decoration-none"
-                    href="destinos.html"
-                >
-                    Ver mais
-                    <img
-                        className="img_link bi"
-                        aria-hidden="true"
-                        src="./assets/images/seta.png"
-                        alt=""
-                    />
-                </a>
-            </div>
+        <section className="m-3">
+
             <div className="d-flex flex-wrap justify-content-evenly gap-5 mt-3">
                 <div
                     className={`card position-relative overflow-hidden ${style.card_destiny}`}

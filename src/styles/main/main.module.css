@@ -31,10 +31,6 @@
     max-width: 200px;
 }
 
-.info_container {
-    color: #FFDD7A;
-}
-
 @media screen and (min-width:992px) {
 
     .section_img {
