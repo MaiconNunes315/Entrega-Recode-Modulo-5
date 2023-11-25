@@ -1,0 +1,36 @@
+/* :root {
+    --azul-claro: #90b8e6;
+    --azul-escuro: #075cc4;
+    --verde-verde: #a4ad68;
+    --amarelo: #FFDD7A;
+    --azul-mais-escuro: #045ccc;
+} */
+
+.p {
+    margin-bottom: 0.5rem !important;
+}
+
+.header {
+    background-color: #045ccc;
+
+}
+
+.header img {
+    width: 50px;
+}
+
+.style_link_hover {
+    color: #90b8e6 !important;
+}
+
+.style_link_hover:hover {
+
+    background-color: #045ccc;
+    border-radius: 5px;
+}
+
+@media screen and (min-width:992px) {
+    .header {
+        background: transparent;
+    }
+}

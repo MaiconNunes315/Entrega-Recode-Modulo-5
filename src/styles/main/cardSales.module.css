@@ -1,0 +1,36 @@
+.btn_card_absolute {
+    top: 10px;
+    left: 10px;
+    padding: 0;
+}
+
+.btn_card_absolute p {
+    margin: 5px;
+}
+
+.card_sale {
+    cursor: pointer;
+    -webkit-box-shadow: 22px 22px 47px -15px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 22px 22px 47px -15px rgba(0, 0, 0, 0.75);
+    box-shadow: 22px 22px 47px -15px rgba(0, 0, 0, 0.75);
+    transition: .7s;
+}
+
+.card_sale:hover {
+    transform: translateY(-10px);
+}
+
+.card_sales_img img {
+    height: 190px;
+
+}
+
+.card_list_sale {
+    list-style: url('../../../public/images/check.png');
+    height: 115px;
+}
+
+.card_sale_price {
+    letter-spacing: -1px;
+    font-weight: 500;
+}

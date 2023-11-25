@@ -1,0 +1,9 @@
+.card_destiny {
+    height: 200px !important;
+    cursor: pointer;
+}
+
+
+.card_destiny:hover {
+    transform: translateY(-10px);
+}

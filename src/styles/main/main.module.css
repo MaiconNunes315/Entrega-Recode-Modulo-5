@@ -1,0 +1,65 @@
+.section_img {
+
+    width: 100%;
+    height: 60vw;
+    min-height: 280px;
+    background-image: url("../../../public/images/Banner1.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+.folder_container>div {
+    height: 45vw;
+    width: 100%;
+    font-family: 'Josefin Sans', sans-serif;
+    color: #FFf;
+
+}
+
+.folder_container h4 {
+    width: 70%;
+    font-size: 1rem;
+    color: #045ccc;
+    display: none;
+}
+
+
+.folder_container a {
+    width: 50%;
+    max-width: 200px;
+}
+
+.info_container {
+    color: #FFDD7A;
+}
+
+@media screen and (min-width:992px) {
+
+    .section_img {
+        margin-top: -76px;
+        top: 0;
+        z-index: -1;
+    }
+
+
+    .folder_container h4 {
+        width: 70%;
+        font-size: 1rem;
+        color: #045ccc;
+        display: block;
+    }
+
+
+    .folder_container>div {
+        width: 50%;
+
+    }
+
+    .folder_container a {
+        width: 150px;
+    }
+
+
+}

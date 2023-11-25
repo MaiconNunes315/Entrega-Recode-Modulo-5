@@ -1,0 +1,47 @@
+.card_info_trip {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: auto;
+    gap: 10px;
+    font-family: 'Josefin Sans', sans-serif;
+    color: #80879b;
+
+}
+
+
+@media screen and (min-width:992px) {
+
+    .card_info_trip {
+        width: 378px;
+        height: 266px;
+        max-width: none;
+        margin: 0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        -webkit-box-shadow: 22px 22px 47px -15px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 22px 22px 47px -15px rgba(0, 0, 0, 0.75);
+        box-shadow: 22px 22px 47px -15px rgba(0, 0, 0, 0.75);
+        transition: all .8s;
+        border-radius: 15px;
+        overflow: hidden;
+
+    }
+
+    .card_info_trip:nth-child(2n) {
+        align-self: flex-end;
+        flex-direction: row-reverse;
+    }
+
+    .card_info_trip:hover {
+        width: 100%;
+        padding: 0 15px;
+        height: calc(266px + 50px);
+    }
+
+    .card_info_trip>div {
+        width: 50%;
+    }
+
+}

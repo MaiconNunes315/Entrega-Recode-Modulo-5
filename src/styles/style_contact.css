@@ -1,0 +1,10 @@
+textarea {
+    resize: none !important;
+    height: 250px !important;
+}
+
+@media screen and (min-width:992px) {
+    section {
+        margin: 100px;
+    }
+}
