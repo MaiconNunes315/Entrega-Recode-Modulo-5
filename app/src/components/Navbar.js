@@ -212,6 +212,16 @@ export default function Navbar() {
                                     Destinos
                                 </a>
                             </li>
+                            <li className="nav-item">
+                                <a className={"nav-link " + style.style_link_hover} href="/cadastre-se">
+                                    Cadastre-se
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a className={"nav-link " + style.style_link_hover} href="/painel-de-controle/users">
+                                    Painel de Controle
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>

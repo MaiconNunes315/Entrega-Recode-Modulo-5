@@ -20,7 +20,7 @@ export default function BannerInfo() {
             {/* container das informações */}
             <section className={`d-flex justify-content-around flex-wrap ${style.info_container} p-3`}>
                 {containerInfo.map((card, index) => (
-                    <span key={index} class=""><img class="pe-2" src={card.img} alt="icone aviao" />
+                    <span key={index} className=""><img className="pe-2" src={card.img} alt="icone aviao" />
                         {card.title}
                     </span>
                 ))}
