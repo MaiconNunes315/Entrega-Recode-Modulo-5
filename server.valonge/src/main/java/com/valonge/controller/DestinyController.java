@@ -42,7 +42,8 @@ public class DestinyController {
 	public ResponseEntity<ResponseJson> addDestiny(@RequestBody Destino destiny) {
 		
 		desRepo.save(destiny);
-		return  new ResponseEntity<>(new ResponseJson("Destino " + destiny.getCidade()+ " atualizado com sucesso", false), HttpStatusCode.valueOf(200));
+		return  new ResponseEntity<>(new ResponseJson("Destino " + destiny.getCidade()+ " cadastrado"
+				+ " com sucesso", false), HttpStatusCode.valueOf(200));
 		
 	}
 	

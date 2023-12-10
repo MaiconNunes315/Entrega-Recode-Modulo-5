@@ -1,6 +1,7 @@
 package com.valonge.controller;
 
 
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,9 +74,14 @@ public class UsersController {
 	}
 	
 	@DeleteMapping("/deletar-usuario/{id}")
-	public String deleteUser(@PathVariable("id") Long id) {
-		userRepo.deleteById(id);
-		return "Usuário " + id +" deletado com sucesso";
+	public ResponseJson deleteUser(@PathVariable("id") Long id) {
+		try{
+			userRepo.deleteById(id);
+			return new ResponseJson("Usuário " + id +" deletado com sucesso",false);
+			
+		}catch (Exception e) {
+			return new ResponseJson(e.getMessage(), true);
+		}
 	}
 
 }

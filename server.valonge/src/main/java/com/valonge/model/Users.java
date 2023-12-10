@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -50,7 +51,7 @@ private long cep;
 @DateTimeFormat(iso = ISO.DATE)
 private LocalDateTime criadoEm, modificadoEm;
 
-@OneToMany(fetch = FetchType.LAZY,mappedBy="usuario")
+@OneToMany(fetch = FetchType.LAZY,mappedBy="usuario",cascade = CascadeType.REMOVE)
 @JsonIgnore
 private Set<Viagem> viagens;
 

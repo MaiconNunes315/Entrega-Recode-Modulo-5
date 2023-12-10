@@ -1,14 +1,16 @@
 import Input from '@/components/Input'
+import { cpfMask, phoneMask, zipMask } from '@/services/functions';
 import style from '@/styles/users/formRegister.module.css';
 import axios from "axios";
 import Head from 'next/head';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 
 export default function cadastro() {
 
-    const [buscaCep, setBuscaCep] = useState({});
+    const [buscaCep, setBuscaCep] = useState(null);
     const [cep, setCep] = useState("");
     const [erro, setErro] = useState("");
     const [name, setName] = useState("");
@@ -24,12 +26,17 @@ export default function cadastro() {
     const [cidade, setCidade] = useState("");
     const [estado, setEstado] = useState("");
     const [password, setPassword] = useState("");
+    const [valor, setValor] = useState('')
+    const [response, setResponse] = useState();
+    const [alert, setAlert] = useState();
+
+    const router = useRouter()
 
 
     function handleSubmit(event) {
         event.preventDefault();
 
-        axios.post("http://localhost:8080/users/cadastro", {
+        axios.post("http://localhost:8080/cadastro_usuario", {
             nome: name,
             dataNascimento: dataNascimento,
             email: email,
@@ -39,24 +46,38 @@ export default function cadastro() {
             cpf: cpf,
             rg: rg,
             telefone: telefone,
-            senha: password
-        }).then(res => console.log(res))
+            senha: password,
+            cep: cep.replace("-", "")
+        }).then(res => {
+            setResponse(res.data.message + "Você será redirecionado em instantes")
+            if (res.data.error) {
+                setAlert("alert-danger")
+
+            } else {
+                setAlert("alert-success")
+                setTimeout(() => {
+                    router.push("/")
+                }, 5000);
+            }
+
+
+        })
     }
 
 
     useEffect(() => {
 
-        if (cep.length > 7) {
+        if (cep.length > 8) {
             axios.get("https://viacep.com.br/ws/" + cep + "/json/").then(res => {
-                if (res.status == 200) {
+                if (!res.data.erro) {
                     setBuscaCep(res.data)
                     setBairro(res.data.bairro)
                     setEndereco(res.data.logradouro)
                     setCidade(res.data.localidade)
                     setEstado(res.data.uf)
-
+                    setErro(null)
                 } else {
-                    setErro("Cep inválido tente novamente")
+                    setErro("CEP inválido! verifique e tente novamente")
                 }
             })
         }
@@ -66,59 +87,61 @@ export default function cadastro() {
 
     //console.log(buscaCep)
 
-
-
-
-
-
     return (
         <>
             <Head>
                 <title>Válonge - Cadastro</title>
             </Head>
             <div className={style.main}>
-                <form className={style.form} onSubmit={handleSubmit}>
-                    <p className={style.title}>Cadastro </p>
-                    <p className={style.message}>Se cadastre e aproveite as melhores ofertas de viagens </p>
-                    <div className={style.flex}>
-                        <Input title="Nome" type="text" required={true} value={name} onChange={(e) => setName(e.target.value)} />
-                        <Input title="Email" type="email" required={true} onChange={(e) => setEmail(e.target.value)} />
-                    </div>
-                    <div className={style.flex}>
-                        <Input title="CPF" type="text" required={true} onChange={(e) => setCpf(e.target.value)} />
-                        <Input title="RG" type="text" required={true} onChange={(e) => setRg(e.target.value)} />
-                    </div>
-                    <div className={style.flex}>
-                        <Input title="Telefone" type="tel" required={true} onChange={(e) => setTelefone(e.target.value)} />
-                        <Input title="Data de Nascimento" type="date" required={true} onChange={(e) => setDataNascimento(e.target.value)} />
-                    </div>
-                    <address className={style.address}>
-                        <div className={style.flex}>
-                            <Input title="Cep" type="text" onChange={(e) => setCep(e.target.value)} required={true} />
 
-                            <Input title="Bairro" type="text" required={true} value={bairro} onChange={(e) => setBairro(e.target.value)} />
+                <div className={style.session}>
+
+
+                    <form className={style.form} onSubmit={handleSubmit}>
+                        {response && (
+                            <div className={"my-2 alert " + alert} role="alert">{response}</div>
+                        )}
+                        <p className={style.title}>Cadastro </p>
+                        <p className={style.message}>Se cadastre e aproveite as melhores ofertas de viagens </p>
+                        <div className={style.flex}>
+                            <Input title="Nome" type="text" required={true} value={name} onChange={(e) => setName(e.target.value)} />
+                            <Input title="Email" type="email" required={true} onChange={(e) => setEmail(e.target.value)} />
                         </div>
                         <div className={style.flex}>
-                            <Input title="Endereço" type="text" required={true} value={endereco} placeholder="Rua tancredo neves 21" onChange={(e) => setEndereco(e.target.value)} />
-
-                            <Input title="Complemento" type="text" onChange={(e) => setComplemento(e.target.value)} placeholder="casa, apartamento, bloco etc." />
+                            <Input title="CPF" type="tel" value={cpf} required={true} onChange={(e) => setCpf(cpfMask(e.target.value))} />
+                            <Input title="RG" type="tel" maxLength="8" required={true} onChange={(e) => setRg(e.target.value)} />
                         </div>
                         <div className={style.flex}>
-                            <Input title="Cidade" type="text" required={true} value={cidade} onChange={(e) => setCidade(e.target.value)} />
-                            <Input title="Estado" type="text" required={true} value={estado} onChange={(e) => setEstado(e.target.value)} />
+                            <Input title="Telefone" type="tel" required={true} value={telefone} onChange={(e) => setTelefone(phoneMask(e.target.value))} maxLength="15" />
+                            <Input title="Data de Nascimento" type="date" required={true} onChange={(e) => setDataNascimento(e.target.value)} />
                         </div>
-                    </address>
-                    <div className={style.flex}>
-                        <Input title="Senha" type="password" required={true} value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <address className={style.address}>
+                            <div className={style.flex}>
+                                <Input title="Cep" type="tel" maxLength="9" onChange={(e) => setCep(zipMask(e.target.value))} value={cep} required={true} />
+                                <Input title="Bairro" type="text" disabled={buscaCep ? false : true} required={true} value={bairro} onChange={(e) => setBairro(e.target.value)} />
+                            </div>
+                            {erro && <span className='text-danger'>{erro}</span>}
+                            <div className={style.flex}>
+                                <Input title="Endereço" type="text" disabled={buscaCep ? false : true} required={true} value={endereco} placeholder="Rua tancredo neves 21" onChange={(e) => setEndereco(e.target.value)} />
 
-                    </div>
+                                <Input title="Complemento" type="text" disabled={buscaCep ? false : true} onChange={(e) => setComplemento(e.target.value)} placeholder="casa, apartamento, bloco etc." />
+                            </div>
+                            <div className={style.flex}>
+                                <Input title="Cidade" type="text" disabled={buscaCep ? false : true} required={true} value={cidade} onChange={(e) => setCidade(e.target.value)} />
+                                <Input title="Estado" type="text" disabled={buscaCep ? false : true} required={true} value={estado} onChange={(e) => setEstado(e.target.value)} />
+                            </div>
+                        </address>
+                        <div className={style.flex}>
+                            <Input title="Senha" type="password" required={true} value={password} onChange={(e) => setPassword(e.target.value)} />
 
-                    <button className={style.submit}>Cadastrar</button>
-                    <p className={style.signin}>
-                        Já possui cadastro ?<Link className={style.a} href="users/login">Login</Link>
-                    </p>
-                </form>
+                        </div>
 
+                        <button className={style.submit}>Cadastrar</button>
+                        <p className={style.signin}>
+                            Já possui cadastro ? <Link className={style.a} href="users/login">Login</Link>
+                        </p>
+                    </form>
+                </div>
             </div>
         </>
     )

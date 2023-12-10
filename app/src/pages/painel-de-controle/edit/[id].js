@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 export default function index() {
 
     const [buscaCep, setBuscaCep] = useState({});
-    const [data, setData] = useState();
+    const [data, setData] = useState({});
     const [cep, setCep] = useState("");
     const [erro, setErro] = useState("");
     const [name, setName] = useState("");
@@ -17,10 +17,10 @@ export default function index() {
     const [cpf, setCpf] = useState("");
     const [rg, setRg] = useState("");
     const [telefone, setTelefone] = useState("");
-    const [dataNascimento, setDataNascimento] = useState();
+    const [dataNascimento, setDataNascimento] = useState("");
     const [endereco, setEndereco] = useState("");
     const [bairro, setBairro] = useState("");
-    const [numero, setNumero] = useState("");
+    const [tipoUsuario, setTipoUsuario] = useState("");
     const [complemento, setComplemento] = useState("");
     const [cidade, setCidade] = useState("");
     const [estado, setEstado] = useState("");
@@ -71,8 +71,8 @@ export default function index() {
                 setTelefone(res.data.telefone)
                 setCep(res.data.cep)
                 setRg(res.data.rg)
-                setEstado(res.data.estavo)
-
+                setEstado(res.data.estado)
+                setTipoUsuario(res.data.tipoUsuario)
             })
         }
     }, [id])
@@ -101,6 +101,8 @@ export default function index() {
     }, [cep])
 
     //console.log(buscaCep)
+
+
 
 
 
@@ -145,15 +147,20 @@ export default function index() {
                                 <Input title="Estado" type="text" value={estado} onChange={(e) => setEstado(e.target.value)} />
                             </div>
                         </address>
-                        <div className={style.flex}>
+                        <span className="text-danger">*Tipos de Usuário "ADMIN", "USER", "FUNC"</span>
+                        <div>
+                            <Input title="Tipo de Usuário " type="text" value={tipoUsuario} onChange={(e) => setTipoUsuario(e.target.value)} />
+                        </div>
+                        <p>
+                            clique para editar senha
+                        </p>
+                        {/* <div className={style.flex}>
                             <Input title="Senha" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
 
-                        </div>
+                        </div> */}
 
-                        <button className={style.submit}>Cadastrar</button>
-                        <p className={style.signin}>
-                            Já possui cadastro ?<Link className={style.a} href="users/login">Login</Link>
-                        </p>
+                        <button className={style.submit}>Editar</button>
+
                     </form>
                 }
 

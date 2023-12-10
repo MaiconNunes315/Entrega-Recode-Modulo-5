@@ -6,6 +6,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -29,7 +30,7 @@ public class Viagem {
 	private double preco, precoDiaria,precoTotal;
 	//private Destino destino;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name="usuario_id", nullable=false)
 	private Users usuario;
 	

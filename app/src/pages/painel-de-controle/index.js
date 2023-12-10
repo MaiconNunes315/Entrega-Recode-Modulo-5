@@ -70,11 +70,24 @@ export default function index() {
                             data-bs-target="#nav-hospedagem"
                             type="button"
                             role="tab"
-                            aria-controls="nav-disabled"
+                            aria-controls="nav-hospedagem"
                             aria-selected="false"
 
                         >
                             Hospedagem
+                        </button>
+                        <button
+                            className="nav-link"
+                            id="nav-sales-tab"
+                            data-bs-toggle="tab"
+                            data-bs-target="#nav-sales"
+                            type="button"
+                            role="tab"
+                            aria-controls="nav-sales"
+                            aria-selected="false"
+
+                        >
+                            Promoções
                         </button>
                     </div>
                 </nav>
@@ -110,10 +123,19 @@ export default function index() {
                         className="tab-pane fade"
                         id="nav-hospedagem"
                         role="tabpanel"
-                        aria-labelledby="nav-disabled-tab"
+                        aria-labelledby="nav-hospedagem-tab"
                         tabIndex={0}
                     >
                         hospedagem
+                    </div>
+                    <div
+                        className="tab-pane fade"
+                        id="nav-sales"
+                        role="tabpanel"
+                        aria-labelledby="nav-sales-tab"
+                        tabIndex={0}
+                    >
+                        promoç~eos
                     </div>
                 </div>
             </>
