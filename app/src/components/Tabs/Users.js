@@ -64,7 +64,7 @@ export default function Users() {
 
                                 </ul>
 
-                                <button className='btn btn-warning'><Link className='nav-link' href={"painel-de-controle/edit/" + user.id}>Editar</Link></button>
+                                <button className='btn btn-warning'><Link className='nav-link' href={"painel-de-controle/editar-usuario/" + user.id}>Editar</Link></button>
                                 <button className='btn btn-danger mx-1' onClick={() => deleteUser(user.id)} >Deletar</button>
                             </div>
                         </div>

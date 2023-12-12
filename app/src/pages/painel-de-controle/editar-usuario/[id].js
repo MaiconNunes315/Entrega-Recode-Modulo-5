@@ -100,15 +100,6 @@ export default function index() {
 
     }, [cep])
 
-    //console.log(buscaCep)
-
-
-
-
-
-
-
-
     return (
         <>
             <Head>

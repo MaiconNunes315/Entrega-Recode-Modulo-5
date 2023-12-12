@@ -5,6 +5,8 @@ import style from '@/styles/control-panel/list-users.module.css';
 import Link from 'next/link';
 import Users from '@/components/Tabs/Users';
 import Destinys from '@/components/Tabs/Destinys';
+import Contato from '@/components/Tabs/Contato';
+import Hospedagem from '@/components/Tabs/Hospedagem';
 
 
 export default function index() {
@@ -61,7 +63,7 @@ export default function index() {
                             aria-controls="nav-contact"
                             aria-selected="false"
                         >
-                            Contato
+                            Contatos
                         </button>
                         <button
                             className="nav-link"
@@ -117,7 +119,7 @@ export default function index() {
                         aria-labelledby="nav-contact-tab"
                         tabIndex={0}
                     >
-                        contato
+                        <Contato />
                     </div>
                     <div
                         className="tab-pane fade"
@@ -126,7 +128,7 @@ export default function index() {
                         aria-labelledby="nav-hospedagem-tab"
                         tabIndex={0}
                     >
-                        hospedagem
+                        <Hospedagem />
                     </div>
                     <div
                         className="tab-pane fade"

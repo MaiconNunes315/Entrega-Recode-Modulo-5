@@ -15,6 +15,8 @@ export default function Destinys() {
     const [img, setImg] = useState("");
     const [pais, setPais] = useState("");
     const [response, setResponse] = useState("");
+    const [error, setError] = useState();
+    const [alert, setAlert] = useState();
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -24,11 +26,34 @@ export default function Destinys() {
             estado: estado,
             pais: pais,
             detalhes: detail
-        }).then(res => setResponse(res.data))
+        }).then(res => {
+            setResponse(res.data.message)
+            if (res.data.error) {
+                setAlert("alert-danger")
+
+            } else {
+                setAlert("alert-success")
+
+            }
+        })
     }
 
     function deletarDestino(id) {
-        axios.delete("http://localhost:8080/delete-destino/" + id).then(res => setResponse(res.data))
+        let confirm = prompt("Digite sim para deletar usuário, não para desistir da operação");
+
+        confirm ? confirm.toLowerCase() : confirm;
+        if (confirm === "sim" || confirm == "s") {
+            axios.delete("http://localhost:8080/delete-destino/" + id).then(res => {
+                if (res.data.error) {
+                    setResponse("Error por favor tente novamente, caso persista entre em contato")
+                    setAlert("alert-danger")
+                } else {
+                    setResponse(res.data.message)
+                    setAlert("alert-success")
+                }
+            });
+        }
+
     }
 
     useEffect(() => {
@@ -41,11 +66,9 @@ export default function Destinys() {
             setDetail(data.detalhes);
             setImg(data.img);
         }
+
     }, [response])
 
-
-
-    console.log(response)
     return (
         <div>
             {/* <div className="accordion" id="accordionExample">
@@ -57,16 +80,20 @@ export default function Destinys() {
                 <div>
 
                     <form className={style.form} onSubmit={handleSubmit}>
+                        {response && (
+                            <p className={'alert ' + alert}>{response}</p>
+                        )}
+
                         <p className={style.title}>Cadastrar Destinos</p>
                         <address className={style.address}>
                             <div className={style.flex}>
 
-                                <Input title="img" type="text" value={img} onChange={(e) => setImg(e.target.value)} />
-                                <Input title="Pais" type="text" value={pais} onChange={(e) => setPais(e.target.value)} />
+                                <Input required={true} title="img" type="text" onChange={(e) => setImg(e.target.value)} />
+                                <Input required={true} title="Pais" type="text" onChange={(e) => setPais(e.target.value)} />
                             </div>
                             <div className={style.flex}>
-                                <Input title="Cidade" type="text" value={cidade} onChange={(e) => setCidade(e.target.value)} />
-                                <Input title="Estado" type="text" value={estado} onChange={(e) => setEstado(e.target.value)} />
+                                <Input required={true} title="Cidade" type="text" onChange={(e) => setCidade(e.target.value)} />
+                                <Input required={true} title="Estado" type="text" onChange={(e) => setEstado(e.target.value)} />
                             </div>
                         </address>
 
@@ -74,7 +101,7 @@ export default function Destinys() {
                             <textarea
                                 className={'form-control ' + style.textarea}
                                 placeholder='Digite os detalhes do destino, como pontos turisticos, baladas, eventos, etc.'
-                                value={detail}
+
                                 onChange={(e) => setDetail(e.target.value)}>
                             </textarea>
                         </div>
@@ -100,8 +127,8 @@ export default function Destinys() {
                             <li className="list-group-item">Detalhes: {destiny.detalhes}</li>
                         </ul>
                         <div className="card-body">
-                            <button className='btn btn-warning'><Link className='nav-link' href={"painel-de-controle/edit/" + destiny.id}>Editar</Link></button>
-                            <button className='btn btn-danger mx-1' onClick={() => deletarDestino(destiny.id)} >Deletar</button>
+                            <button className='btn btn-warning'><Link className='nav-link' href={"painel-de-controle/editar-destino/" + destiny.id}>Editar</Link></button>
+                            <button className='btn btn-danger mx-1' type='button' onClick={() => deletarDestino(destiny.id)} >Deletar</button>
                         </div>
                     </div>
                 ))}
