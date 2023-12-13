@@ -116,7 +116,7 @@ export default function Destinys() {
 
                 {data.map(destiny => (
                     <div className="card" key={destiny.id} style={{ width: "18rem" }}>
-                        <img src={destiny.img} className="card-img-top" alt={"Imagem do destino " + destiny.cidade} width={"100%"} />
+                        <img height="150px" src={destiny.img} className="card-img-top" alt={"Imagem do destino " + destiny.cidade} width={"100%"} />
                         <div className="card-body">
                             <h5 className="card-title">Dados do destino: {destiny.id}</h5>
                         </div>

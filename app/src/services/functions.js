@@ -25,3 +25,12 @@ export const zipMask = (e) => {
 
     return v;
 }
+
+export function moneyMask(int) {
+    var tmp = int.replace(/\D/g, '');
+    tmp = tmp.replace(/([0-9]{2})$/g, ",$1");
+    if (tmp.length > 6)
+        tmp = tmp.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+
+    return "R$ " + tmp;
+}
