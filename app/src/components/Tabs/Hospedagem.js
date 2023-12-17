@@ -4,6 +4,7 @@ import style from '@/styles/users/formRegister.module.css'
 import Input from '../Input';
 import { moneyMask } from '@/services/functions';
 import ModalForm from '../Modal/ModalForm';
+import useTrip from '@/hooks/useTrip';
 
 
 
@@ -90,6 +91,7 @@ export default function Hospedagem() {
         axios.get("http://localhost:8080/destinos").then(res => {
             setCidadeDestino(res.data.map(destino => destino.cidade))
         })
+
     }, [])
 
 

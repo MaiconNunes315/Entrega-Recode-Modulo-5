@@ -7,6 +7,7 @@ import Users from '@/components/Tabs/Users';
 import Destinys from '@/components/Tabs/Destinys';
 import Contato from '@/components/Tabs/Contato';
 import Hospedagem from '@/components/Tabs/Hospedagem';
+import Sale from '@/components/Tabs/Sale';
 
 
 export default function index() {
@@ -137,7 +138,7 @@ export default function index() {
                         aria-labelledby="nav-sales-tab"
                         tabIndex={0}
                     >
-                        promoç~eos
+                        <Sale />
                     </div>
                 </div>
             </>

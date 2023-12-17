@@ -5,13 +5,13 @@ import CardDestiny from '@/components/CardDestiny';
 import CardSales from '@/components/CardSales';
 import Title from '@/components/Title';
 import BannerInfo from '@/components/BannerInfo';
+import useDestiny from '@/hooks/useDestiny';
 
 
 
 export default function Home() {
 
-
-
+  const { destinys } = useDestiny();
 
   return (
     <>
@@ -51,7 +51,12 @@ export default function Home() {
         <Title title="Promoções" link="/sales" />
         <CardSales />
         <Title title="Destinos" link="/destinys" />
-        <CardDestiny />
+        <section className='d-flex justify-content-center gap-3 flex-wrap'>
+
+          {destinys && destinys.map(destiny => (
+            <CardDestiny img={destiny.img} cidade={destiny.cidade} id={destiny.id} />
+          ))}
+        </section>
       </main>
     </>
   )
