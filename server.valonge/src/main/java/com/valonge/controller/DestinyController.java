@@ -31,7 +31,7 @@ public class DestinyController {
 
 	@GetMapping("/destinos")
 	public List<Destino> getAllDestiny(@RequestParam(value = "page", defaultValue = "0") Integer page,
-            @RequestParam(value = "size") Integer size) {
+            @RequestParam(value = "size", defaultValue = "30") Integer size) {
 		
 		PageRequest pegeable = PageRequest.of(page,size );
 		

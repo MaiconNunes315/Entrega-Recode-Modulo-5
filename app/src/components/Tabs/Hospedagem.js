@@ -88,7 +88,7 @@ export default function Hospedagem() {
     }, [response])
 
     useEffect(() => {
-        axios.get("http://localhost:8080/destinos?page=0&size=100").then(res => {
+        axios.get("http://localhost:8080/destinos?page=0&size=50").then(res => {
             setCidadeDestino(res.data.map(destino => destino.cidade))
         })
 
