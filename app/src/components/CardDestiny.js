@@ -1,5 +1,6 @@
 
 import style from '@/styles/main/cardDestiny.module.css';
+import Link from 'next/link';
 
 export default function CardDestiny({ id, img, cidade }) {
 
@@ -20,9 +21,9 @@ export default function CardDestiny({ id, img, cidade }) {
                 <div className="z-1 d-flex h-100 flex-column justify-content-end align-items-center mb-3">
                     <p className="text-warning mb-0">PACOTES PARA</p>
                     <h3 className="text-white fs-1">{cidade}</h3>
-                    <a href={"/destinys/" + id} className="btn btn-warning text-white">
+                    <Link href={"/destinys/" + id} className="btn btn-warning text-white">
                         Conferir
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

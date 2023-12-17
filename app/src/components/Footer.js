@@ -28,7 +28,7 @@ export default function Footer() {
                 </div>
                 <div>
                     <h4>Viaje com a gente</h4>
-                    <p>
+                    {/* <p>
 
                         <Link
                             href="/sales"
@@ -36,7 +36,7 @@ export default function Footer() {
                         >
                             Promoção
                         </Link>
-                    </p>
+                    </p> */}
                     <p>
 
                         <Link

@@ -25,6 +25,9 @@ export default function index() {
     const [cidade, setCidade] = useState("");
     const [estado, setEstado] = useState("");
     const [password, setPassword] = useState("");
+    const [response, setResponse] = useState("");
+    const [alert, setAlert] = useState("");
+
 
     const router = useRouter();
     const { id } = router.query;
@@ -46,8 +49,12 @@ export default function index() {
             telefone: telefone,
             senha: password,
             cep: cep,
-            id: id
-        }).then(res => console.log(res))
+            id: id,
+            tipoUsuario: tipoUsuario
+        }).then(res => {
+            setAlert("alert-success");
+            setResponse(res.data.message);
+        })
     }
 
 
@@ -106,8 +113,12 @@ export default function index() {
                 <title>Válonge - Editar usuário</title>
             </Head>
             <div className={style.main}>
+
                 {data &&
                     <form className={style.form} onSubmit={handleSubmit}>
+                        {response && (
+                            <div className={"my-2 alert " + alert} role="alert">{response}</div>
+                        )}
                         <p className={style.title}>Editar usuário</p>
                         <p className={style.message}>Se cadastre e aproveite as melhores ofertas de viagens </p>
                         <div className={style.flex}>

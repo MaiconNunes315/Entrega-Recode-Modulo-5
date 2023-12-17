@@ -88,7 +88,7 @@ export default function Hospedagem() {
     }, [response])
 
     useEffect(() => {
-        axios.get("http://localhost:8080/destinos").then(res => {
+        axios.get("http://localhost:8080/destinos?page=0&size=100").then(res => {
             setCidadeDestino(res.data.map(destino => destino.cidade))
         })
 
@@ -132,7 +132,7 @@ export default function Hospedagem() {
 
                             </address>
 
-                            <button className={style.submit} style={{ maxWidth: "150px" }}>Editar</button>
+                            <button className={style.submit} style={{ maxWidth: "150px" }}>Cadastrar</button>
 
                         </form>
                     ) : (
@@ -158,7 +158,7 @@ export default function Hospedagem() {
                             <tr key={hosp.id}>
                                 <td>{hosp.id}</td>
                                 <td>{hosp.nomeLocal}</td>
-                                <td>{hosp.precoDiaria}</td>
+                                <td>R$ {hosp.precoDiaria.toFixed(2)}</td>
                                 <td>{hosp.cidade}</td>
                                 <td>
 

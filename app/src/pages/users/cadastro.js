@@ -137,9 +137,9 @@ export default function cadastro() {
                         </div>
 
                         <button className={style.submit}>Cadastrar</button>
-                        <p className={style.signin}>
+                        {/* <p className={style.signin}>
                             Já possui cadastro ? <Link className={style.a} href="users/login">Login</Link>
-                        </p>
+                        </p> */}
                     </form>
                 </div>
             </div>

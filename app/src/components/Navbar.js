@@ -32,7 +32,7 @@ export default function Navbar() {
                             className="d-flex flex-column flex-sm-row gap-2 gap-sm-0"
                             role="search"
                         >
-                            <input
+                            {/* <input
                                 className="form-control bg-light me-2"
                                 type="search"
                                 placeholder="Pesquisar"
@@ -40,10 +40,10 @@ export default function Navbar() {
                             />
                             <button className="btn btn-warning" type="submit">
                                 Pesquisar
-                            </button>
+                            </button> */}
                         </form>
                         <ul className="navbar-nav mb-2 mb-lg-0">
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <a
                                     className={"nav-link " + style.style_link_hover}
                                     aria-current="page"
@@ -103,7 +103,7 @@ export default function Navbar() {
                                     </svg>
                                     Promoções
                                 </a>
-                            </li>
+                            </li> */}
                             <li className="nav-item">
                                 <a className={"nav-link " + style.style_link_hover} href="/contact">
                                     <svg

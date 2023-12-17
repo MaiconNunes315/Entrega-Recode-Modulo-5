@@ -39,7 +39,7 @@ export default function Home() {
                   distância.
               </p> */}
             </div>
-            <a href="destiny.html" className="btn btn-primary">
+            <a href="/destinys" className="btn btn-primary">
               Descubra Agora!
             </a>
           </div>
@@ -48,13 +48,13 @@ export default function Home() {
 
         <BannerInfo />
         <CardInfo />
-        <Title title="Promoções" link="/sales" />
-        <CardSales />
+        {/* <Title title="Promoções" link="/sales" /> */}
+        {/* <CardSales /> */}
         <Title title="Destinos" link="/destinys" />
-        <section className='d-flex justify-content-center gap-3 flex-wrap'>
+        <section className='d-flex justify-content-center gap-3 flex-wrap my-5'>
 
           {destinys && destinys.map(destiny => (
-            <CardDestiny img={destiny.img} cidade={destiny.cidade} id={destiny.id} />
+            <CardDestiny img={destiny.img} cidade={destiny.cidade} id={destiny.id} key={destiny.id} />
           ))}
         </section>
       </main>

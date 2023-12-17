@@ -8,9 +8,7 @@ export default function index() {
         <main className="container">
             <BannerInfo />
             <BannerDestiny nationality="Destinos Nacionais" leftDestiny="Maceió" leftDestinyImg="images/maceio.jpeg" />
-            <CardDestiny />
-            <BannerDestiny nationality="Destinos Internacionais" leftDestiny="Lisboa" leftDestinyImg="images/lisboa.jpg" />
-            <CardDestiny />
+
         </main >
 
     )

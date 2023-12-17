@@ -17,6 +17,7 @@ export default function Destinys() {
     const [response, setResponse] = useState("");
     const [error, setError] = useState();
     const [alert, setAlert] = useState();
+    const [page, setPage] = useState(0);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -57,7 +58,7 @@ export default function Destinys() {
     }
 
     useEffect(() => {
-        axios.get("http://localhost:8080/destinos").then(res => setData(res.data))
+        axios.get("http://localhost:8080/destinos?page=" + page + "&size=5").then(res => setData(res.data))
 
         if (data) {
             setCidade(data.cidade);
@@ -67,7 +68,7 @@ export default function Destinys() {
             setImg(data.img);
         }
 
-    }, [response])
+    }, [response, page])
 
     return (
         <div>
@@ -88,7 +89,7 @@ export default function Destinys() {
                         <address className={style.address}>
                             <div className={style.flex}>
 
-                                <Input required={true} title="img" type="text" onChange={(e) => setImg(e.target.value)} />
+                                <Input required={true} title="img" maxLength={"255"} type="text" onChange={(e) => setImg(e.target.value)} />
                                 <Input required={true} title="Pais" type="text" onChange={(e) => setPais(e.target.value)} />
                             </div>
                             <div className={style.flex}>
@@ -101,7 +102,7 @@ export default function Destinys() {
                             <textarea
                                 className={'form-control ' + style.textarea}
                                 placeholder='Digite os detalhes do destino, como pontos turisticos, baladas, eventos, etc.'
-
+                                maxLength="255"
                                 onChange={(e) => setDetail(e.target.value)}>
                             </textarea>
                         </div>
@@ -135,7 +136,15 @@ export default function Destinys() {
 
             </div>
 
-
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    {page > 0 ? (<li class="page-item"><span class="page-link" href="#" onClick={() => setPage(prev => prev - 1)}>Previous</span></li>) : (null)}
+                    <li class="page-item"><span class="page-link" onClick={() => setPage(0)}>1</span></li>
+                    <li class="page-item"><span class="page-link" onClick={() => setPage(1)}>2</span></li>
+                    <li class="page-item"><span class="page-link" onClick={() => setPage(2)}>3</span></li>
+                    {page < data.length / 5 ? (<li class="page-item"><span class="page-link" onClick={() => setPage(prev => prev + 1)}>Next</span></li>) : (null)}
+                </ul>
+            </nav>
         </div>
     )
 }

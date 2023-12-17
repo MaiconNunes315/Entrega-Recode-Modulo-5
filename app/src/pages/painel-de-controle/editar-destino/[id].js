@@ -82,6 +82,7 @@ export default function index() {
                             className={'form-control ' + style.textarea}
                             placeholder='Digite os detalhes do destino, como pontos turisticos, baladas, eventos, etc.'
                             value={detail}
+                            maxLength="255"
                             onChange={(e) => setDetail(e.target.value)}>
                         </textarea>
                     </div>

@@ -50,9 +50,9 @@ export default function CardInfo() {
             <p>
               {card.description}
             </p>
-            <button className="btn btn-primary" type="button">
+            <a href="/destinys" className="btn btn-primary" type="button">
               Reserve Já
-            </button>
+            </a>
           </div>
         </div>
       ))
