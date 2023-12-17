@@ -27,7 +27,7 @@ public class Viagem {
 	private int desconto, possuiHospedagem;
 	private String observacoes;
 	private LocalDateTime dataEntrada, dataSaida;
-	private double preco, precoDiaria,precoTotal;
+	private double preco,precoTotal;
 	//private Destino destino;
 	
 	@ManyToOne(cascade = CascadeType.REMOVE)
@@ -88,12 +88,7 @@ public class Viagem {
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
-	public double getPrecoDiaria() {
-		return precoDiaria;
-	}
-	public void setPrecoDiaria(double precoDiaria) {
-		this.precoDiaria = precoDiaria;
-	}
+
 	public double getPrecoTotal() {
 		return precoTotal;
 	}

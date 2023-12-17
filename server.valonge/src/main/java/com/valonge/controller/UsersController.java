@@ -66,7 +66,7 @@ public class UsersController {
 	public ResponseEntity<ResponseJson> updateClient(@RequestBody Users userDetails, @PathVariable("id") Long id) {
 			Users user = userRepo.findById(id).get();
 			userDetails.setCriadoEm(user.getCriadoEm());
-			userDetails.setTipoUsuario(user.getTipoUsuario());
+			
 		userDetails.setModificadoEm(LocalDateTime.now());
 		userRepo.save(userDetails);
 		

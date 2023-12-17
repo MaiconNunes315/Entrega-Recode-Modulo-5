@@ -1,6 +1,7 @@
 package com.valonge.controller;
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class ContatoController {
 	
 	@PostMapping("/new-contato")
 	public ResponseEntity<ResponseJson> addContato(@RequestBody Contato contato) {
-		
+		contato.setData(LocalDateTime.now());
 		contRepo.save(contato);
 		return new ResponseEntity<>(new ResponseJson("Mensagem enviada, em breve entraremos em contato", false), HttpStatusCode.valueOf(201));
 		

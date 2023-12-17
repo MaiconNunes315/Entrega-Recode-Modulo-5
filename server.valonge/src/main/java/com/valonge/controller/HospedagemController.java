@@ -33,9 +33,17 @@ public class HospedagemController {
 	public List<Hospedagem> getHospedagem(){
 		return hRepo.findAll();
 	}
+	
 	@GetMapping("/hospedagem/{id}")
 	public Hospedagem getHospedagem(@PathVariable("id") Long id){
 		return hRepo.findById(id).get();
+	}
+	
+	@GetMapping("/hospedagem/cidade/{cidade}")
+	public List<Hospedagem> getHospedagemPorCidade(@PathVariable("cidade") String cidade){
+		cidade = cidade.replace("+", " ");
+		return hRepo.findAllLodgingCity(cidade);
+		//return hRepo.findById(id).get();
 	}
 	
 	@PostMapping("/new-hospedagem")

@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.valonge.model.ResponseJson;
 import com.valonge.model.Users;
 import com.valonge.model.Viagem;
 import com.valonge.repository.TripRepository;
@@ -41,19 +44,22 @@ public class TripController {
 	}
 	
 	@PostMapping("/new-viagem")
-	public Viagem postTrip(@RequestBody Viagem viagem) {
+	public ResponseEntity<ResponseJson> postTrip(@RequestBody Viagem viagem) {
 		
 //		user.setCriadoEm(LocalDateTime.now());
 //		user.setModificadoEm(LocalDateTime.now());
 //		user.setTipoUsuario("USER");
 		
-		viagem.setDataEntrada(LocalDateTime.now());
-		viagem.setDataSaida(LocalDateTime.now());
 		
-		Users user = userRepo.findById((long) 37).get();
-		viagem.setUsuario(user);
-		
-		return tripRepo.save(viagem);
+//		Users user = userRepo.findById((long) 37).get();
+//		viagem.setUsuario(user);
+		try {
+			Viagem v = tripRepo.save(viagem);
+			return new ResponseEntity<ResponseJson>(new ResponseJson("Viagem comprada com sucesso, Boa viagem !", false, v), HttpStatusCode.valueOf(201)); 
+			
+		}catch (Exception e) {
+			return new ResponseEntity<ResponseJson>(new ResponseJson(e.getMessage(), true), HttpStatusCode.valueOf(400));
+		}
 		
 	}
 	

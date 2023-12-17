@@ -2,7 +2,9 @@ package com.valonge.controller;
 
 import java.util.List;
 
+import org.hibernate.query.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.valonge.model.Destino;
@@ -27,9 +30,12 @@ public class DestinyController {
 	DestinyRepository desRepo;
 
 	@GetMapping("/destinos")
-	public List<Destino> getAllDestiny() {
-
-		return desRepo.findAll();
+	public List<Destino> getAllDestiny(@RequestParam(value = "page", defaultValue = "0") Integer page,
+            @RequestParam(value = "size") Integer size) {
+		
+		PageRequest pegeable = PageRequest.of(page,size );
+		
+		return desRepo.findAll(pegeable).getContent();
 
 	}
 

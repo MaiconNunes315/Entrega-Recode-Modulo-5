@@ -30,8 +30,8 @@ public class Hospedagem {
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="viagem_hospedagem",
-	joinColumns=@JoinColumn(name="viagem_id"),
-	inverseJoinColumns=@JoinColumn(name="hospedagem_id"))
+	joinColumns=@JoinColumn(name="hospedagem_id"),
+	inverseJoinColumns=@JoinColumn(name="viagem_id"))
 	private Set<Viagem> viagem = new HashSet<>();
 	
 //	@JoinColumn(foreignKey = @ForeignKey(name = "id_destino"))
